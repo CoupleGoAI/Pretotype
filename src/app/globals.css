@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
+/* ─── THEME COLORS — change these 3 values to restyle the whole app ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand */
+  --c-primary: #ff4458; /* main buttons, active states */
+  --c-accent: #ff2d55; /* gradient pair, highlights */
+  --c-muted: #fff1f4; /* soft romantic backgrounds */
+
+  /* Neutrals */
+  --background: #ffffff; /* clean app background */
+  --foreground: #111418;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--c-primary);
+  --color-accent: var(--c-accent);
+  --color-muted: var(--c-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    var(--font-sans),
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* smooth scroll for anchor nav */
+html {
+  scroll-behavior: smooth;
+}
+
+/* swipe card transitions */
+.swipe-card {
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+  touch-action: pan-y;
+}
+
+/* focus-visible ring for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
