@@ -22,8 +22,13 @@ const plans = [
 
 export default function Pricing() {
     return (
-        <section id="pricing" className="py-20 sm:py-[120px] px-6 bg-white">
-            <div className="max-w-[1140px] mx-auto">
+        <section id="pricing" className="relative py-20 sm:py-[120px] px-6">
+            {/* Background card */}
+            <div
+                className="absolute inset-0 mx-4 sm:mx-10 rounded-[28px] sm:rounded-[40px]"
+                style={{ background: "var(--c-muted)" }}
+            />
+            <div className="relative z-[1] max-w-[1140px] mx-auto">
                 {/* Header */}
                 <RevealOnScroll className="text-center mb-16">
                     <SectionBadge>Pricing</SectionBadge>
