@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CoupleGoAI — Pretotype",
-  description: "Discover your relationship dynamics in 60 seconds",
+  title: "CoupleGoAI — Your Relationship's Secret Superpower",
+  description: "A personal AI confidant for each of you, and a shared Couple AI that actually understands both sides.",
 };
 
 export default function RootLayout({
@@ -24,14 +24,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Outfit + Fraunces from the design */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-primary/10 px-6 py-3">
-          <a href="/" className="text-lg font-bold tracking-tight text-foreground hover:text-primary transition">
-            CoupleGoAI <span className="text-accent">&hearts;</span>
-          </a>
-        </header>
         {children}
       </body>
     </html>

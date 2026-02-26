@@ -1,15 +1,52 @@
 @import "tailwindcss";
 
-/* ─── THEME COLORS — change these 3 values to restyle the whole app ─── */
+/* ─── THEME — change values here to restyle the whole app ─── */
 :root {
   /* Brand */
-  --c-primary: #ff4458; /* main buttons, active states */
-  --c-accent: #ff2d55; /* gradient pair, highlights */
-  --c-muted: #fff1f4; /* soft romantic backgrounds */
+  --c-primary: #f48ba6; /* pink — main buttons, active states */
+  --c-accent: #cc7be8; /* orchid — gradient pair, highlights */
+  --c-muted: #fef0f4; /* pink-soft — soft backgrounds */
+
+  /* Extended palette (derived from brand) */
+  --c-primary-light: #f9b5c8;
+  --c-accent-light: #dda8f0;
+  --c-accent-soft: #f5eafa;
 
   /* Neutrals */
-  --background: #ffffff; /* clean app background */
-  --foreground: #111418;
+  --background: #ffffff;
+  --foreground: #1e1230;
+  --foreground-muted: #42335a;
+  --gray: #8a7b9e;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(
+    135deg,
+    var(--c-muted) 0%,
+    var(--background) 40%,
+    var(--c-accent-soft) 100%
+  );
+  --gradient-brand: linear-gradient(
+    135deg,
+    var(--c-primary) 0%,
+    var(--c-accent) 100%
+  );
+  --gradient-card: linear-gradient(
+    160deg,
+    rgba(244, 139, 166, 0.08) 0%,
+    rgba(204, 123, 232, 0.08) 100%
+  );
+
+  /* Shadows */
+  --shadow-sm: 0 2px 12px rgba(30, 18, 48, 0.06);
+  --shadow-md: 0 8px 32px rgba(30, 18, 48, 0.08);
+  --shadow-lg: 0 20px 60px rgba(30, 18, 48, 0.12);
+  --shadow-glow-primary: 0 8px 40px rgba(244, 139, 166, 0.3);
+  --shadow-glow-accent: 0 8px 40px rgba(204, 123, 232, 0.3);
+
+  /* Radii */
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-full: 999px;
 }
 
 @theme inline {
@@ -26,13 +63,27 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family:
+    "Outfit",
     var(--font-sans),
     system-ui,
     -apple-system,
     sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* smooth scroll for anchor nav */
+/* subtle noise overlay like the HTML */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+  pointer-events: none;
+  z-index: 50;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -50,4 +101,51 @@ html {
   outline: 2px solid var(--c-primary);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* ─── animations ─── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+@keyframes bubbleIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* reveal util — JS toggles .visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
