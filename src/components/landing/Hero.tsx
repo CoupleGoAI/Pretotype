@@ -1,4 +1,10 @@
+"use client";
+
+import { useWaitlist } from "./WaitlistProvider";
+
 export default function Hero() {
+    const { open } = useWaitlist();
+
     return (
         <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden px-6 pt-[120px] pb-20"
             style={{ background: "var(--gradient-hero)" }}
@@ -37,11 +43,11 @@ export default function Hero() {
 
                 {/* Actions */}
                 <div className="flex gap-4 justify-center flex-wrap animate-[fadeUp_0.8s_0.3s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0">
-                    <a href="#cta"
-                        className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-[1.05rem] text-white no-underline transition-all duration-[350ms] hover:-translate-y-0.5"
+                    <button onClick={open}
+                        className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-[1.05rem] text-white no-underline cursor-pointer border-none transition-all duration-[350ms] hover:-translate-y-0.5"
                         style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow-primary)" }}>
                         Join the Waitlist →
-                    </a>
+                    </button>
                     <a href="#how"
                         className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-[1.05rem] text-[var(--foreground)] bg-white border border-[rgba(30,18,48,0.1)] no-underline transition-all duration-[350ms] hover:border-[var(--c-primary)] hover:-translate-y-0.5"
                         style={{ boxShadow: "none" }}>
