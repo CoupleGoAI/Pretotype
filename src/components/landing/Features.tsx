@@ -1,10 +1,11 @@
 import RevealOnScroll from "./RevealOnScroll";
+import SectionBadge from "./SectionBadge";
 
 const cards = [
-    { emoji: "🛡", title: "Private AI Confidant", desc: "Your safe space. Vent, process emotions, and get honest feedback without judgment. Your partner never sees these conversations.", bg: "var(--c-muted)" },
-    { emoji: "⚖", title: "Neutral Mediation", desc: "The Couple AI understands both sides equally. It translates feelings, spots miscommunication, and suggests compromises you hadn\u2019t thought of.", bg: "var(--c-accent-soft)" },
-    { emoji: "🎉", title: "Date & Gift Ideas", desc: "Get hyper-personalized suggestions based on what both of you actually like — not generic \u201Ctop 10\u201D lists from the internet.", bg: "var(--c-accent-soft)" },
-    { emoji: "📊", title: "Love Dashboard", desc: "Track your relationship health over time: conflicts resolved, dates planned, communication trends, and milestones celebrated.", bg: "var(--c-muted)" },
+    { emoji: "🛡", title: "Private AI Confidant", desc: "Vent and get honest feedback without judgment. Your partner never sees these chats.", bg: "var(--c-muted)" },
+    { emoji: "⚖", title: "Neutral Mediation", desc: "The Couple AI understands both sides and suggests compromises you hadn\u2019t thought of.", bg: "var(--c-accent-soft)" },
+    { emoji: "🎉", title: "Date & Gift Ideas", desc: "Hyper-personalized suggestions based on what both of you actually like.", bg: "var(--c-accent-soft)" },
+    { emoji: "📊", title: "Love Dashboard", desc: "Track conflicts resolved, dates planned, communication trends, and milestones.", bg: "var(--c-muted)" },
 ];
 
 export default function Features() {
@@ -14,10 +15,8 @@ export default function Features() {
             <div className="max-w-[1140px] mx-auto">
                 {/* Header */}
                 <RevealOnScroll className="text-center mb-[72px]">
-                    <div className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-[var(--c-accent)] mb-4 before:content-[''] before:w-5 before:h-0.5 before:rounded before:bg-[var(--c-primary)]">
-                        Features
-                    </div>
-                    <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.15] tracking-tight mb-5" style={{ fontFamily: "'Fraunces', serif" }}>
+                    <SectionBadge>Features</SectionBadge>
+                    <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.15] tracking-tight mb-5" style={{ fontFamily: "var(--font-fraunces)" }}>
                         Everything your<br />relationship needs
                     </h2>
                     <p className="text-[1.1rem] text-[var(--gray)] leading-[1.7] max-w-[520px] mx-auto">
@@ -38,7 +37,7 @@ export default function Features() {
                                     style={{ background: c.bg }}>
                                     {c.emoji}
                                 </div>
-                                <h3 className="text-[1.25rem] font-semibold mb-2.5" style={{ fontFamily: "'Fraunces', serif" }}>
+                                <h3 className="text-[1.25rem] font-semibold mb-2.5" style={{ fontFamily: "var(--font-fraunces)" }}>
                                     {c.title}
                                 </h3>
                                 <p className="text-[var(--gray)] leading-[1.65] text-[0.95rem]">{c.desc}</p>
@@ -48,12 +47,10 @@ export default function Features() {
 
                     {/* Large "See It In Action" card */}
                     <RevealOnScroll className="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-12 items-center p-10 sm:p-12 bg-white rounded-[var(--radius)] border border-[rgba(30,18,48,0.05)]"
-                        style={{ boxShadow: "var(--shadow-sm)" } as React.CSSProperties}>
+                        style={{ boxShadow: "var(--shadow-sm)" }}>
                         <div>
-                            <div className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-[var(--c-accent)] mb-4 before:content-[''] before:w-5 before:h-0.5 before:rounded before:bg-[var(--c-primary)]">
-                                See It In Action
-                            </div>
-                            <h3 className="text-[1.5rem] font-semibold mb-3" style={{ fontFamily: "'Fraunces', serif" }}>
+                            <SectionBadge>See It In Action</SectionBadge>
+                            <h3 className="text-[1.5rem] font-semibold mb-3" style={{ fontFamily: "var(--font-fraunces)" }}>
                                 Your AI, your voice
                             </h3>
                             <p className="text-[var(--gray)] leading-[1.7] text-[0.95rem]">
@@ -63,13 +60,13 @@ export default function Features() {
                         {/* Chat visual */}
                         <div className="rounded-2xl p-10 flex flex-col gap-4"
                             style={{ background: "linear-gradient(135deg, var(--c-muted), var(--c-accent-soft))" }}>
-                            <div className="self-end px-5 py-3.5 rounded-[18px] rounded-br-[6px] text-white text-[0.9rem] leading-[1.5] max-w-[85%] animate-[bubbleIn_0.5s_0.5s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
+                            <div className="self-end px-5 py-3.5 rounded-[18px] rounded-br-md text-white text-[0.9rem] leading-[1.5] max-w-[85%] animate-[bubbleIn_0.5s_0.5s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
                                 style={{ background: "var(--c-primary)" }}>
                                 They never ask about my day. I feel invisible.
                             </div>
-                            <div className="self-start px-5 py-3.5 rounded-[18px] rounded-bl-[6px] bg-white text-[var(--foreground)] text-[0.9rem] leading-[1.5] max-w-[85%] animate-[bubbleIn_0.5s_1s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
+                            <div className="self-start px-5 py-3.5 rounded-[18px] rounded-bl-md bg-white text-foreground text-[0.9rem] leading-normal max-w-[85%] animate-[bubbleIn_0.5s_1s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
                                 style={{ boxShadow: "var(--shadow-sm)" }}>
-                                <div className="text-[0.7rem] font-bold uppercase tracking-[0.08em] text-[var(--c-accent)] mb-1">CoupleGoAI</div>
+                                <div className="text-[0.7rem] font-bold uppercase tracking-[0.08em] text-accent mb-1">CoupleGoAI</div>
                                 That sounds really frustrating. Your need to feel seen is valid. Would you like to explore a gentle way to express this to them?
                             </div>
                             <div className="self-end px-5 py-3.5 rounded-[18px] rounded-br-[6px] text-white text-[0.9rem] leading-[1.5] max-w-[85%] animate-[bubbleIn_0.5s_1.5s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"

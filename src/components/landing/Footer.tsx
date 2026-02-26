@@ -1,3 +1,5 @@
+import BrandHeart from "./BrandHeart";
+
 export default function Footer() {
     return (
         <footer className="px-6 pt-20 pb-10 text-white/60" style={{ background: "var(--foreground)" }}>
@@ -7,7 +9,7 @@ export default function Footer() {
                     <a href="#" className="flex items-center gap-2.5 no-underline font-bold text-[1.35rem] text-white mb-4">
                         <div className="w-[38px] h-[38px] rounded-[12px] flex items-center justify-center text-white text-lg"
                             style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow-primary)" }}>
-                            ❤
+                            <BrandHeart size={20} />
                         </div>
                         CoupleGoAI
                     </a>
@@ -46,7 +48,7 @@ export default function Footer() {
             {/* Bottom bar */}
             <div className="max-w-[1140px] mx-auto pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row justify-between items-center gap-3 text-[0.85rem]">
                 <p>© 2026 CoupleGoAI. All rights reserved.</p>
-                <p>Made with ❤ for modern love.</p>
+                <p className="flex items-center gap-1">Made with <BrandHeart size={14} /> for modern love.</p>
             </div>
         </footer>
     );

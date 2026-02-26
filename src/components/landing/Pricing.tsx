@@ -1,4 +1,5 @@
 import RevealOnScroll from "./RevealOnScroll";
+import SectionBadge from "./SectionBadge";
 
 const plans = [
     {
@@ -25,10 +26,8 @@ export default function Pricing() {
             <div className="max-w-[1140px] mx-auto">
                 {/* Header */}
                 <RevealOnScroll className="text-center mb-16">
-                    <div className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold uppercase tracking-[0.12em] text-[var(--c-accent)] mb-4 before:content-[''] before:w-5 before:h-0.5 before:rounded before:bg-[var(--c-primary)]">
-                        Pricing
-                    </div>
-                    <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.15] tracking-tight mb-5" style={{ fontFamily: "'Fraunces', serif" }}>
+                    <SectionBadge>Pricing</SectionBadge>
+                    <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.15] tracking-tight mb-5" style={{ fontFamily: "var(--font-fraunces)" }}>
                         Less than one coffee<br />date a month
                     </h2>
                     <p className="text-[1.1rem] text-[var(--gray)] leading-[1.7] max-w-[520px] mx-auto">
@@ -41,8 +40,8 @@ export default function Pricing() {
                     {plans.map((plan) => (
                         <RevealOnScroll key={plan.tier}
                             className={`relative p-10 rounded-[var(--radius)] border transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[var(--shadow-md)] ${plan.popular
-                                    ? "border-[var(--c-accent)]"
-                                    : "border-[rgba(30,18,48,0.08)]"
+                                ? "border-[var(--c-accent)]"
+                                : "border-[rgba(30,18,48,0.08)]"
                                 }`}
                             style={plan.popular ? { background: "linear-gradient(170deg, var(--background) 0%, var(--c-accent-soft) 100%)", boxShadow: "var(--shadow-glow-accent)" } : undefined}
                         >
@@ -54,7 +53,7 @@ export default function Pricing() {
                             )}
 
                             <div className="text-[0.9rem] font-semibold text-[var(--gray)] uppercase tracking-[0.08em] mb-2">{plan.tier}</div>
-                            <div className="text-[2.8rem] font-bold mb-1" style={{ fontFamily: "'Fraunces', serif" }}>
+                            <div className="text-[2.8rem] font-bold mb-1" style={{ fontFamily: "var(--font-fraunces)" }}>
                                 {plan.price} <span className="text-base font-normal text-[var(--gray)]">/month</span>
                             </div>
                             <p className="text-[var(--gray)] text-[0.9rem] leading-[1.5] mb-7">{plan.desc}</p>
@@ -73,8 +72,8 @@ export default function Pricing() {
 
                             <a href="#cta"
                                 className={`flex items-center justify-center w-full px-7 py-3 rounded-full font-semibold text-[0.95rem] no-underline cursor-pointer transition-all duration-[350ms] hover:-translate-y-0.5 ${plan.popular
-                                        ? "text-white"
-                                        : "text-[var(--foreground)] bg-white border border-[rgba(30,18,48,0.1)]"
+                                    ? "text-white"
+                                    : "text-[var(--foreground)] bg-white border border-[rgba(30,18,48,0.1)]"
                                     }`}
                                 style={plan.popular
                                     ? { background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow-primary)" }

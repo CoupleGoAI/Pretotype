@@ -18,39 +18,85 @@ interface SwipeQuizProps {
     onFinish: (answers: string[]) => void;
 }
 
+/* ─── Constants ─── */
+const DISTANCE_THRESHOLD = 100;   // px — minimum drag distance to count as a swipe
+const VELOCITY_THRESHOLD = 0.5;   // px/ms — fast flick override
+const MAX_ROTATION = 12;          // degrees clamp
+const EXIT_DISTANCE = 600;        // px — how far the card flies off-screen
+
 export default function SwipeQuiz({ onFinish }: SwipeQuizProps) {
     const [index, setIndex] = useState(0);
     const [answers, setAnswers] = useState<string[]>([]);
-    const [dragX, setDragX] = useState(0);
+    const [hintDir, setHintDir] = useState<"left" | "right" | null>(null);
     const [exiting, setExiting] = useState<"left" | "right" | null>(null);
 
-    /* touch/mouse state */
-    const startX = useRef(0);
-    const dragging = useRef(false);
+    /* ─── refs for jitter-free drag ─── */
     const cardRef = useRef<HTMLDivElement>(null);
+    const dragging = useRef(false);
+    const startX = useRef(0);
+    const currentX = useRef(0);              // raw offset — never in state
+    const rafId = useRef(0);
+    const lastPointerX = useRef(0);
+    const lastPointerTime = useRef(0);
+    const velocity = useRef(0);              // px/ms
 
-    const THRESHOLD = 80;
+    /* ─── sync state → refs (safe in useEffect, not during render) ─── */
+    const answersRef = useRef(answers);
+    const indexRef = useRef(index);
+    useEffect(() => {
+        answersRef.current = answers;
+        indexRef.current = index;
+    }, [answers, index]);
 
-    /* ─── answer handler ─── */
-    const choose = useCallback(
-        (dir: "left" | "right") => {
-            const answer = dir === "left" ? questions[index].left : questions[index].right;
-            const next = [...answers, answer];
+    /* ─── apply transform via rAF ─── */
+    const applyTransform = useCallback((x: number) => {
+        const el = cardRef.current;
+        if (!el) return;
+        const rot = Math.max(-MAX_ROTATION, Math.min(MAX_ROTATION, x * 0.06));
+        el.style.transform = `translate3d(${x}px, 0, 0) rotate(${rot}deg)`;
+    }, []);
 
+    /* ─── advance to next card or finish ─── */
+    const advance = useCallback(
+        (dir: "left" | "right", prevAnswers: string[], prevIndex: number) => {
+            const answer = dir === "left" ? questions[prevIndex].left : questions[prevIndex].right;
+            const next = [...prevAnswers, answer];
+
+            // Animate exit
             setExiting(dir);
+            const el = cardRef.current;
+            if (el) {
+                el.style.transition = "transform 300ms cubic-bezier(.22,1,.36,1), opacity 300ms ease";
+                const exitX = dir === "left" ? -EXIT_DISTANCE : EXIT_DISTANCE;
+                el.style.transform = `translate3d(${exitX}px, 0, 0) rotate(${dir === "left" ? -MAX_ROTATION : MAX_ROTATION}deg)`;
+                el.style.opacity = "0";
+            }
+
             setTimeout(() => {
                 setExiting(null);
-                setDragX(0);
-
-                if (index + 1 < questions.length) {
+                currentX.current = 0;
+                if (el) {
+                    el.style.transition = "";
+                    el.style.transform = "translate3d(0,0,0)";
+                    el.style.opacity = "1";
+                }
+                if (prevIndex + 1 < questions.length) {
                     setAnswers(next);
                     setIndex((i) => i + 1);
                 } else {
                     onFinish(next);
                 }
-            }, 250);
+            }, 300);
         },
-        [index, answers, onFinish],
+        [onFinish],
+    );
+
+    /* ─── stable choose via refs ─── */
+    const choose = useCallback(
+        (dir: "left" | "right") => {
+            advance(dir, answersRef.current, indexRef.current);
+        },
+        [advance],
     );
 
     /* ─── keyboard ─── */
@@ -63,30 +109,75 @@ export default function SwipeQuiz({ onFinish }: SwipeQuizProps) {
         return () => window.removeEventListener("keydown", handler);
     }, [choose]);
 
-    /* ─── touch / pointer events ─── */
-    const onPointerDown = (e: React.PointerEvent) => {
+    /* ─── pointer events ─── */
+    const onPointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+        if (exiting) return;
         dragging.current = true;
         startX.current = e.clientX;
-        (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
-    };
-    const onPointerMove = (e: React.PointerEvent) => {
+        lastPointerX.current = e.clientX;
+        lastPointerTime.current = e.timeStamp;
+        velocity.current = 0;
+        currentX.current = 0;
+
+        const el = cardRef.current;
+        if (el) {
+            el.style.transition = "";                  // remove any snap-back transition
+            el.setPointerCapture(e.pointerId);
+        }
+    }, [exiting]);
+
+    const onPointerMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
         if (!dragging.current) return;
-        setDragX(e.clientX - startX.current);
-    };
-    const onPointerUp = () => {
+
+        const dx = e.clientX - startX.current;
+        currentX.current = dx;
+
+        // Velocity tracking (exponential moving average)
+        const dt = e.timeStamp - lastPointerTime.current;
+        if (dt > 0) {
+            const instantVel = (e.clientX - lastPointerX.current) / dt;
+            velocity.current = velocity.current * 0.6 + instantVel * 0.4;
+        }
+        lastPointerX.current = e.clientX;
+        lastPointerTime.current = e.timeStamp;
+
+        cancelAnimationFrame(rafId.current);
+        rafId.current = requestAnimationFrame(() => {
+            applyTransform(dx);
+        });
+
+        // Update hint direction via state (safe for rendering)
+        const newDir: "left" | "right" | null = Math.abs(dx) > 20 ? (dx < 0 ? "left" : "right") : null;
+        setHintDir(newDir);
+    }, [applyTransform]);
+
+    const onPointerUp = useCallback(() => {
         if (!dragging.current) return;
         dragging.current = false;
-        if (dragX < -THRESHOLD) choose("left");
-        else if (dragX > THRESHOLD) choose("right");
-        else setDragX(0);
-    };
+        cancelAnimationFrame(rafId.current);
+
+        const dx = currentX.current;
+        const vel = velocity.current;
+        const absX = Math.abs(dx);
+        const absVel = Math.abs(vel);
+
+        if (absX > DISTANCE_THRESHOLD || absVel > VELOCITY_THRESHOLD) {
+            const dir = dx < 0 ? "left" : "right";
+            choose(dir);
+        } else {
+            // Snap back with spring-like ease
+            const el = cardRef.current;
+            if (el) {
+                el.style.transition = "transform 350ms cubic-bezier(.22,1,.36,1)";
+                el.style.transform = "translate3d(0,0,0) rotate(0deg)";
+            }
+            currentX.current = 0;
+            setHintDir(null);
+        }
+    }, [choose]);
 
     /* ─── current card ─── */
     const card = questions[index];
-
-    const exitTranslate =
-        exiting === "left" ? "-translate-x-[120%] opacity-0" :
-            exiting === "right" ? "translate-x-[120%] opacity-0" : "";
 
     return (
         <section id="quiz" className="py-20 px-6 max-w-md mx-auto text-center scroll-mt-12">
@@ -107,21 +198,17 @@ export default function SwipeQuiz({ onFinish }: SwipeQuizProps) {
                 onPointerDown={onPointerDown}
                 onPointerMove={onPointerMove}
                 onPointerUp={onPointerUp}
-                className={`swipe-card relative select-none rounded-3xl bg-white border border-primary/10 shadow-xl p-8 min-h-65 flex flex-col items-center justify-center ${exitTranslate}`}
-                style={{
-                    transform: exiting ? undefined : `translateX(${dragX}px) rotate(${dragX * 0.05}deg)`,
-                    cursor: "grab",
-                }}
+                className="swipe-card relative select-none touch-none rounded-3xl bg-white border border-primary/10 shadow-xl p-8 min-h-65 flex flex-col items-center justify-center will-change-transform"
+                style={{ cursor: exiting ? "default" : "grab" }}
                 role="group"
                 aria-label={`Question ${index + 1} of ${questions.length}`}
             >
                 {/* directional hints */}
-                {dragX !== 0 && (
+                {hintDir && (
                     <span
-                        className={`absolute top-4 ${dragX < 0 ? "left-4" : "right-4"} text-xs font-bold uppercase tracking-wider ${dragX < 0 ? "text-accent" : "text-primary"
-                            }`}
+                        className={`absolute top-4 ${hintDir === "left" ? "left-4" : "right-4"} text-xs font-bold uppercase tracking-wider ${hintDir === "left" ? "text-accent" : "text-primary"}`}
                     >
-                        {dragX < 0 ? card.left : card.right}
+                        {hintDir === "left" ? card.left : card.right}
                     </span>
                 )}
 

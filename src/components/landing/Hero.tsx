@@ -23,7 +23,7 @@ export default function Hero() {
 
                 {/* Headline */}
                 <h1 className="font-serif text-[clamp(2.8rem,6vw,4.5rem)] font-bold leading-[1.1] tracking-tight mb-6 animate-[fadeUp_0.8s_0.1s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
-                    style={{ fontFamily: "'Fraunces', serif" }}>
+                    style={{ fontFamily: "var(--font-fraunces)" }}>
                     Your relationship&apos;s<br />
                     <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-brand)" }}>
                         secret superpower
