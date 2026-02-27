@@ -56,7 +56,7 @@ export default function Features() {
                                     </p>
                                 </div>
                                 {/* Chat visual */}
-                                <div className="rounded-2xl p-10 flex flex-col gap-4"
+                                <div className="rounded-2xl p-4 sm:p-10 flex flex-col gap-4"
                                     style={{ background: "linear-gradient(135deg, var(--c-muted), var(--c-accent-soft))" }}>
                                     <div className="self-end px-5 py-3.5 rounded-[18px] rounded-br-md text-white text-[0.9rem] leading-[1.5] max-w-[85%] animate-[bubbleIn_0.5s_0.5s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
                                         style={{ background: "var(--c-primary)" }}>

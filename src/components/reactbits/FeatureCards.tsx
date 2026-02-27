@@ -37,7 +37,7 @@ export function BentoCard({
 }: BentoCardProps) {
     return (
         <div
-            className={`group relative overflow-hidden p-10 rounded-[var(--radius)] bg-white/70 backdrop-blur-[12px] border border-[rgba(30,18,48,0.05)] transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[var(--shadow-md)] hover:border-[rgba(244,139,166,0.15)] ${wide ? "sm:col-span-2" : ""} ${className}`}
+            className={`group relative overflow-hidden p-5 sm:p-10 rounded-[var(--radius)] bg-white/70 backdrop-blur-[12px] border border-[rgba(30,18,48,0.05)] transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[var(--shadow-md)] hover:border-[rgba(244,139,166,0.15)] ${wide ? "sm:col-span-2" : ""} ${className}`}
         >
             {/* Gradient fill on hover */}
             <div
