@@ -19,7 +19,8 @@ export default function QuizSection() {
 
             {/* Grainient area */}
             <div className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] mx-0 sm:mx-4 py-16 sm:py-20 px-6">
-                {/* Grainient background */}
+                {/* Grainient background — hidden while quiz is active */}
+                {!quizStarted && (
                 <div className="absolute inset-0 z-[0]">
                     <Grainient
                         color1="#f48ba6"
@@ -46,6 +47,7 @@ export default function QuizSection() {
                         zoom={0.9}
                     />
                 </div>
+                )}
 
                 <div className="relative z-[1] max-w-285 mx-auto text-center">
                     {!quizStarted && !quizAnswers && (
