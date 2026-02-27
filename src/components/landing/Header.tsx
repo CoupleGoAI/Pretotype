@@ -2,11 +2,9 @@
 
 import { useEffect, useState } from "react";
 import BrandHeart from "./BrandHeart";
-import { useWaitlist } from "./WaitlistProvider";
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
-    const { open } = useWaitlist();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 40);
@@ -50,13 +48,13 @@ export default function Header() {
                     </li>
                 ))}
                 <li>
-                    <button
-                        onClick={open}
+                    <a
+                        href="#quiz-section"
                         className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-semibold text-[0.95rem] text-white no-underline cursor-pointer border-none transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5"
                         style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow-primary)" }}
                     >
-                        Get Started Free
-                    </button>
+                        Take the Quiz
+                    </a>
                 </li>
             </ul>
         </nav>

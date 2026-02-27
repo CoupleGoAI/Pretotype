@@ -21,8 +21,11 @@ export default function QuizSection() {
                         >
                             Discover your couple<br />dynamics in 60 seconds
                         </h2>
-                        <p className="text-[1.1rem] text-(--gray) leading-[1.7] max-w-130 mx-auto mb-10">
+                        <p className="text-[1.1rem] text-(--gray) leading-[1.7] max-w-130 mx-auto mb-4">
                             Take our Tinder-style swipe quiz — 8 quick questions about your relationship. Get a personalised Couple Snapshot instantly.
+                        </p>
+                        <p className="text-[0.9rem] text-(--gray)/70 leading-[1.6] max-w-110 mx-auto mb-10">
+                            🎉 After the quiz you&apos;ll be added to our waitlist — be the first to try CoupleGoAI when we launch!
                         </p>
                         <button
                             onClick={() => setQuizStarted(true)}

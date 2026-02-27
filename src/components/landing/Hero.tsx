@@ -1,10 +1,8 @@
 "use client";
 
-import { useWaitlist } from "./WaitlistProvider";
 import HeroCTA from "@/components/reactbits/HeroCTA";
 
 export default function Hero() {
-    const { open } = useWaitlist();
 
     return (
         <section className="relative min-h-screen flex items-center justify-center text-center overflow-hidden px-6 pt-[120px] pb-20"
@@ -44,9 +42,11 @@ export default function Hero() {
 
                 {/* Actions */}
                 <div className="flex gap-4 justify-center flex-wrap animate-[fadeUp_0.8s_0.3s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0">
-                    <HeroCTA onClick={open}>
-                        Join the Waitlist →
-                    </HeroCTA>
+                    <a href="#quiz-section">
+                        <HeroCTA>
+                            Take the Quiz →
+                        </HeroCTA>
+                    </a>
                     <a href="#how"
                         className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-[1.05rem] text-[var(--foreground)] bg-white border border-[rgba(30,18,48,0.1)] no-underline transition-all duration-[350ms] hover:border-[var(--c-primary)] hover:-translate-y-0.5"
                         style={{ boxShadow: "none" }}>

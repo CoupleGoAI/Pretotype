@@ -12,7 +12,9 @@ export default function Home() {
         <Features />
         <QuizSection />
         <Pricing />
+        <div className="h-8 sm:h-12" />
         <CTA />
+        <div className="h-8 sm:h-12" />
       </main>
       <Footer />
     </WaitlistProvider>

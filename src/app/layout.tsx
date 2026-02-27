@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Outfit, Fraunces } from "next/font/google";
-import AuroraBackground from "@/components/reactbits/AuroraBackground";
+import GrainientBg from "@/components/GrainientBg";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,7 +41,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable} ${fraunces.variable} antialiased`}
       >
-        <AuroraBackground />
+        <GrainientBg />
         {children}
       </body>
     </html>
