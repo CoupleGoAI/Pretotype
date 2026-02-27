@@ -7,6 +7,10 @@
   --c-accent: #cc7be8; /* orchid — gradient pair, highlights */
   --c-muted: #fef0f4; /* pink-soft — soft backgrounds */
 
+  /* RGB channels (for aurora / compositing) */
+  --c-primary-rgb: 244, 139, 166;
+  --c-accent-rgb: 204, 123, 232;
+
   /* Extended palette (derived from brand) */
   --c-primary-light: #f9b5c8;
   --c-accent-light: #dda8f0;
@@ -139,6 +143,71 @@ html {
   }
 }
 
+/* ─── Aurora background blobs ─── */
+@keyframes auroraMove1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(5%, -8%) scale(1.05);
+  }
+  50% {
+    transform: translate(-3%, 5%) scale(0.98);
+  }
+  75% {
+    transform: translate(7%, 3%) scale(1.02);
+  }
+}
+@keyframes auroraMove2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-6%, 4%) scale(1.03);
+  }
+  50% {
+    transform: translate(4%, -6%) scale(0.97);
+  }
+  75% {
+    transform: translate(-5%, -3%) scale(1.04);
+  }
+}
+@keyframes auroraMove3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(3%, 6%) scale(1.02);
+  }
+  66% {
+    transform: translate(-4%, -4%) scale(0.98);
+  }
+}
+
+/* ─── Glare sweep (HeroCTA) ─── */
+@keyframes glareSweep {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+/* ─── Quiz card idle glow pulse ─── */
+@keyframes quizCardGlow {
+  0%,
+  100% {
+    box-shadow: 0 20px 60px rgba(244, 139, 166, 0.1);
+  }
+  50% {
+    box-shadow: 0 20px 60px rgba(204, 123, 232, 0.18);
+  }
+}
+
 /* reveal util — JS toggles .visible */
 .reveal {
   opacity: 0;
@@ -148,4 +217,19 @@ html {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ─── Respect reduced-motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

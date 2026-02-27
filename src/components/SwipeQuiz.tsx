@@ -198,8 +198,8 @@ export default function SwipeQuiz({ onFinish }: SwipeQuizProps) {
                 onPointerDown={onPointerDown}
                 onPointerMove={onPointerMove}
                 onPointerUp={onPointerUp}
-                className="swipe-card relative select-none touch-none rounded-3xl bg-white border border-primary/10 shadow-xl p-8 min-h-65 flex flex-col items-center justify-center will-change-transform"
-                style={{ cursor: exiting ? "default" : "grab" }}
+                className="swipe-card relative select-none touch-none rounded-3xl bg-white border border-primary/10 p-8 min-h-65 flex flex-col items-center justify-center will-change-transform"
+                style={{ cursor: exiting ? "default" : "grab", animation: "quizCardGlow 4s ease-in-out infinite" }}
                 role="group"
                 aria-label={`Question ${index + 1} of ${questions.length}`}
             >
@@ -212,27 +212,27 @@ export default function SwipeQuiz({ onFinish }: SwipeQuizProps) {
                     </span>
                 )}
 
-                <p className="text-xl sm:text-2xl font-bold mb-8">{card.q}</p>
+                <p className="text-xl sm:text-2xl font-bold mb-8 px-2">{card.q}</p>
 
-                <div className="flex items-center gap-6 text-base font-medium">
-                    <span className="text-accent">← {card.left}</span>
+                <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 w-full text-sm sm:text-base font-medium px-2">
+                    <span className="text-accent text-center leading-snug">← {card.left}</span>
                     <span className="text-foreground/20">|</span>
-                    <span className="text-primary">{card.right} →</span>
+                    <span className="text-primary text-center leading-snug">{card.right} →</span>
                 </div>
             </div>
 
             {/* Clickable fallback buttons */}
-            <div className="flex justify-center gap-4 mt-6">
+            <div className="flex justify-center gap-3 mt-6 w-full max-w-md mx-auto">
                 <button
                     onClick={() => choose("left")}
-                    className="rounded-full border-2 border-accent px-6 py-2 font-semibold text-accent transition hover:bg-accent hover:text-white"
+                    className="flex-1 min-w-0 rounded-full border-2 border-accent px-4 py-2 font-semibold text-sm text-accent transition hover:bg-accent hover:text-white truncate"
                     aria-label={`Choose ${card.left}`}
                 >
                     ← {card.left}
                 </button>
                 <button
                     onClick={() => choose("right")}
-                    className="rounded-full border-2 border-primary px-6 py-2 font-semibold text-primary transition hover:bg-primary hover:text-white"
+                    className="flex-1 min-w-0 rounded-full border-2 border-primary px-4 py-2 font-semibold text-sm text-primary transition hover:bg-primary hover:text-white truncate"
                     aria-label={`Choose ${card.right}`}
                 >
                     {card.right} →

@@ -1,5 +1,6 @@
 import RevealOnScroll from "./RevealOnScroll";
 import SectionBadge from "./SectionBadge";
+import { BentoGrid, BentoCard } from "@/components/reactbits/FeatureCards";
 
 const cards = [
     { emoji: "🛡", title: "Private AI Confidant", desc: "Vent and get honest feedback without judgment. Your partner never sees these chats.", bg: "var(--c-muted)" },
@@ -24,15 +25,11 @@ export default function Features() {
                     </p>
                 </RevealOnScroll>
 
-                {/* Cards grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {/* Cards grid — Bento */}
+                <BentoGrid>
                     {cards.map((c, i) => (
-                        <RevealOnScroll key={i}
-                            className="group relative overflow-hidden p-10 rounded-[var(--radius)] bg-white/70 backdrop-blur-[20px] border border-[rgba(30,18,48,0.05)] transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[var(--shadow-md)] hover:border-[rgba(244,139,166,0.15)]">
-                            {/* hover overlay */}
-                            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
-                                style={{ background: "var(--gradient-card)" }} />
-                            <div className="relative z-[1]">
+                        <RevealOnScroll key={i}>
+                            <BentoCard>
                                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-[26px] mb-5"
                                     style={{ background: c.bg }}>
                                     {c.emoji}
@@ -41,41 +38,44 @@ export default function Features() {
                                     {c.title}
                                 </h3>
                                 <p className="text-[var(--gray)] leading-[1.65] text-[0.95rem]">{c.desc}</p>
-                            </div>
+                            </BentoCard>
                         </RevealOnScroll>
                     ))}
 
                     {/* Large "See It In Action" card */}
-                    <RevealOnScroll className="col-span-1 sm:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-12 items-center p-10 sm:p-12 bg-white rounded-[var(--radius)] border border-[rgba(30,18,48,0.05)]"
-                        style={{ boxShadow: "var(--shadow-sm)" }}>
-                        <div>
-                            <SectionBadge>See It In Action</SectionBadge>
-                            <h3 className="text-[1.5rem] font-semibold mb-3" style={{ fontFamily: "var(--font-fraunces)" }}>
-                                Your AI, your voice
-                            </h3>
-                            <p className="text-[var(--gray)] leading-[1.7] text-[0.95rem]">
-                                CoupleGoAI doesn&apos;t pick sides. It helps both of you feel heard, then guides you toward understanding. Here&apos;s a glimpse of how a conversation might flow.
-                            </p>
-                        </div>
-                        {/* Chat visual */}
-                        <div className="rounded-2xl p-10 flex flex-col gap-4"
-                            style={{ background: "linear-gradient(135deg, var(--c-muted), var(--c-accent-soft))" }}>
-                            <div className="self-end px-5 py-3.5 rounded-[18px] rounded-br-md text-white text-[0.9rem] leading-[1.5] max-w-[85%] animate-[bubbleIn_0.5s_0.5s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
-                                style={{ background: "var(--c-primary)" }}>
-                                They never ask about my day. I feel invisible.
+                    <RevealOnScroll className="col-span-1 sm:col-span-2">
+                        <BentoCard wide className="!bg-white">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-center">
+                                <div>
+                                    <SectionBadge>See It In Action</SectionBadge>
+                                    <h3 className="text-[1.5rem] font-semibold mb-3" style={{ fontFamily: "var(--font-fraunces)" }}>
+                                        Your AI, your voice
+                                    </h3>
+                                    <p className="text-[var(--gray)] leading-[1.7] text-[0.95rem]">
+                                        CoupleGoAI doesn&apos;t pick sides. It helps both of you feel heard, then guides you toward understanding. Here&apos;s a glimpse of how a conversation might flow.
+                                    </p>
+                                </div>
+                                {/* Chat visual */}
+                                <div className="rounded-2xl p-10 flex flex-col gap-4"
+                                    style={{ background: "linear-gradient(135deg, var(--c-muted), var(--c-accent-soft))" }}>
+                                    <div className="self-end px-5 py-3.5 rounded-[18px] rounded-br-md text-white text-[0.9rem] leading-[1.5] max-w-[85%] animate-[bubbleIn_0.5s_0.5s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
+                                        style={{ background: "var(--c-primary)" }}>
+                                        They never ask about my day. I feel invisible.
+                                    </div>
+                                    <div className="self-start px-5 py-3.5 rounded-[18px] rounded-bl-md bg-white text-foreground text-[0.9rem] leading-normal max-w-[85%] animate-[bubbleIn_0.5s_1s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
+                                        style={{ boxShadow: "var(--shadow-sm)" }}>
+                                        <div className="text-[0.7rem] font-bold uppercase tracking-[0.08em] text-accent mb-1">CoupleGoAI</div>
+                                        That sounds really frustrating. Your need to feel seen is valid. Would you like to explore a gentle way to express this to them?
+                                    </div>
+                                    <div className="self-end px-5 py-3.5 rounded-[18px] rounded-br-[6px] text-white text-[0.9rem] leading-[1.5] max-w-[85%] animate-[bubbleIn_0.5s_1.5s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
+                                        style={{ background: "var(--c-primary)" }}>
+                                        Yeah... I just don&apos;t want it to sound like an attack.
+                                    </div>
+                                </div>
                             </div>
-                            <div className="self-start px-5 py-3.5 rounded-[18px] rounded-bl-md bg-white text-foreground text-[0.9rem] leading-normal max-w-[85%] animate-[bubbleIn_0.5s_1s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
-                                style={{ boxShadow: "var(--shadow-sm)" }}>
-                                <div className="text-[0.7rem] font-bold uppercase tracking-[0.08em] text-accent mb-1">CoupleGoAI</div>
-                                That sounds really frustrating. Your need to feel seen is valid. Would you like to explore a gentle way to express this to them?
-                            </div>
-                            <div className="self-end px-5 py-3.5 rounded-[18px] rounded-br-[6px] text-white text-[0.9rem] leading-[1.5] max-w-[85%] animate-[bubbleIn_0.5s_1.5s_cubic-bezier(0.22,1,0.36,1)_forwards] opacity-0"
-                                style={{ background: "var(--c-primary)" }}>
-                                Yeah... I just don&apos;t want it to sound like an attack.
-                            </div>
-                        </div>
+                        </BentoCard>
                     </RevealOnScroll>
-                </div>
+                </BentoGrid>
             </div>
         </section>
     );
