@@ -4,7 +4,6 @@ import SectionBadge from "./SectionBadge";
 const plans = [
     {
         tier: "Crush",
-        subtitle: "Free",
         price: "€0",
         desc: "Try CoupleGoAI, vent safely, and get a taste of smarter support.",
         features: [
@@ -20,8 +19,7 @@ const plans = [
     },
     {
         tier: "Couple",
-        subtitle: "Pro",
-        price: "€10",
+        price: "€5",
         desc: "Turn conflicts into connection with a shared AI that knows both of you.",
         features: [
             "Unlimited chat for both partners",
@@ -36,8 +34,7 @@ const plans = [
     },
     {
         tier: "Soulmate",
-        subtitle: "Premium",
-        price: "€18",
+        price: "€12",
         desc: "Turn your relationship into a growth journey with deep insights and coaching.",
         features: [
             "Everything in Couple, plus:",
@@ -94,7 +91,6 @@ export default function Pricing() {
                                 </div>
                             )}
 
-                            <div className="text-[0.8rem] font-semibold text-[var(--gray)] uppercase tracking-[0.08em] mb-1">{plan.subtitle}</div>
                             <div className="text-[1.1rem] font-bold text-[var(--foreground)] mb-3">{plan.tier}</div>
                             <div className="text-[2.5rem] font-bold mb-1" style={{ fontFamily: "var(--font-fraunces)" }}>
                                 {plan.price} <span className="text-base font-normal text-[var(--gray)]">/mo per couple</span>
