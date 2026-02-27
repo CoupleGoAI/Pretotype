@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import WaitlistForm from "./landing/WaitlistForm";
 
 /* map answers → snapshot blurb */
 function buildSnapshot(a: string[]): { title: string; bullets: string[] } {
@@ -27,8 +27,7 @@ function buildSnapshot(a: string[]): { title: string; bullets: string[] } {
         `🎯 Primary goal: ${goal}`,
         `🛠 Help style: ${help}`,
         `✨ Top interest: ${interest}`,
-        `🔒 Privacy: ${privacy}`,
-        `💰 Budget range: ${pay}/mo`,
+        `🔒 Privacy: ${privacy}`
     ];
 
     return { title, bullets };
@@ -40,21 +39,6 @@ interface ResultProps {
 
 export default function Result({ answers }: ResultProps) {
     const { title, bullets } = buildSnapshot(answers);
-    const [email, setEmail] = useState("");
-    const [invitePartner, setInvitePartner] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
-
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
-
-        console.log("📩 Beta signup payload:", {
-            email,
-            invitePartner,
-            answers,
-            snapshot: title,
-        });
-        setSubmitted(true);
-    };
 
     return (
         <section className="py-20 px-6 max-w-lg mx-auto text-center animate-[fadeUp_0.4s_ease]">
@@ -72,52 +56,7 @@ export default function Result({ answers }: ResultProps) {
                 ))}
             </ul>
 
-            {!submitted ? (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <p className="font-semibold text-lg">Join the CoupleGo beta 🚀</p>
-
-                    <input
-                        type="email"
-                        required
-                        placeholder="you@email.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full rounded-xl border border-primary/20 bg-white px-5 py-3 text-base outline-none focus:border-primary transition"
-                    />
-
-                    <label className="flex items-center justify-center gap-2 text-sm cursor-pointer">
-                        <input
-                            type="checkbox"
-                            checked={invitePartner}
-                            onChange={() => setInvitePartner(!invitePartner)}
-                            className="accent-primary w-4 h-4"
-                        />
-                        Also invite my partner
-                    </label>
-
-                    <button
-                        type="submit"
-                        className="w-full rounded-full bg-primary px-6 py-3 text-lg font-semibold text-white shadow-lg shadow-primary/30 transition hover:brightness-110"
-                    >
-                        Get early access
-                    </button>
-                </form>
-            ) : (
-                <div className="rounded-2xl bg-muted p-8">
-                    <p className="text-2xl font-bold mb-2">You&apos;re in! 🎉</p>
-                    <p className="text-foreground/60">
-                        We&apos;ll reach out soon. Check the console for the full payload.
-                    </p>
-                </div>
-            )}
-
-            {/* inline keyframe */}
-            <style>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(16px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+            <WaitlistForm extraPayload={{ quizAnswers: answers, snapshot: title }} />
         </section>
     );
 }

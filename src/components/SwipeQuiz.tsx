@@ -10,8 +10,7 @@ const questions: { q: string; left: string; right: string }[] = [
     { q: "Biggest goal?", left: "Less fights", right: "More closeness" },
     { q: "Preferred help style?", left: "De-escalation", right: "Communication tips" },
     { q: "Most interesting feature?", left: "Proactive dates", right: "Pattern insights" },
-    { q: "Privacy comfort?", left: "Anonymous", right: "Account-based" },
-    { q: "Willingness to pay?", left: "0–49 DKK", right: "50–199 DKK" },
+    { q: "Privacy comfort?", left: "Anonymous", right: "Account-based" }
 ];
 
 interface SwipeQuizProps {
