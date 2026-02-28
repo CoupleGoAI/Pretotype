@@ -61,6 +61,8 @@
   --color-muted: var(--c-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-outfit: "Outfit", sans-serif;
+  --font-fraunces: "Fraunces", serif;
 }
 
 body {
