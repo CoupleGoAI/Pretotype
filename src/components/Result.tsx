@@ -1,6 +1,7 @@
 "use client";
 
 import WaitlistForm from "./landing/WaitlistForm";
+import QuizGrainient from "./QuizGrainient";
 
 /* map answers → snapshot blurb */
 function buildSnapshot(a: string[]): { title: string; bullets: string[] } {
@@ -56,7 +57,12 @@ export default function Result({ answers }: ResultProps) {
                 ))}
             </ul>
 
-            <WaitlistForm extraPayload={{ quizAnswers: answers, snapshot: title }} />
+            <div className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] mt-8 py-10 px-6">
+                <QuizGrainient />
+                <div className="relative z-[1]">
+                    <WaitlistForm extraPayload={{ quizAnswers: answers, snapshot: title }} />
+                </div>
+            </div>
         </section>
     );
 }
