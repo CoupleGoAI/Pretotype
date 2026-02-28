@@ -22,7 +22,7 @@ const plans = [
         price: "€5",
         desc: "Turn conflicts into connection with a shared AI that knows both of you.",
         features: [
-            "Unlimited chat for both partners",
+            "Unlimited personal AI chat",
             "Shared Couple AI mediation",
             "Date, trip & gift planning",
             "Full conversation scripts library",
@@ -93,7 +93,7 @@ export default function Pricing() {
 
                             <div className="text-[1.1rem] font-bold text-[var(--foreground)] mb-3">{plan.tier}</div>
                             <div className="text-[2.5rem] font-bold mb-1" style={{ fontFamily: "var(--font-fraunces)" }}>
-                                {plan.price} <span className="text-base font-normal text-[var(--gray)]">/mo per couple</span>
+                                {plan.price} <span className="text-base font-normal text-[var(--gray)]">/mo per partner</span>
                             </div>
                             <p className="text-[var(--gray)] text-[0.88rem] leading-[1.55] mb-7">{plan.desc}</p>
 
