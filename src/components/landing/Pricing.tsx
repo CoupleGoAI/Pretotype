@@ -1,55 +1,6 @@
 import RevealOnScroll from "./RevealOnScroll";
 import SectionBadge from "./SectionBadge";
-
-const plans = [
-    {
-        tier: "Crush",
-        price: "€0",
-        desc: "Try CoupleGoAI, vent safely, and get a taste of smarter support.",
-        features: [
-            "Personal AI chat (10–15 msgs/day)",
-            "Basic onboarding quiz",
-            "Emotional support after conflicts",
-            "1–2 conversation scripts",
-            "3 date/gift ideas per month",
-            "Daily relationship check‑in",
-        ],
-        cta: "Get Started Free",
-        popular: false,
-    },
-    {
-        tier: "Couple",
-        price: "€5",
-        desc: "Turn conflicts into connection with a shared AI that knows both of you.",
-        features: [
-            "Unlimited personal AI chat",
-            "Shared Couple AI mediation",
-            "Date, trip & gift planning",
-            "Full conversation scripts library",
-            "Love Success mini‑dashboard",
-            "Tag & revisit important convos",
-        ],
-        cta: "Join the Waitlist",
-        popular: true,
-    },
-    {
-        tier: "Soulmate",
-        price: "€12",
-        desc: "Turn your relationship into a growth journey with deep insights and coaching.",
-        features: [
-            "Everything in Couple, plus:",
-            "Months of AI memory & patterns",
-            "Advanced trends & monthly review",
-            "Custom goals with nudges",
-            "Voice notes to AI",
-            "Guided micro‑programs",
-            "Anonymous community access",
-            "Early access to new features",
-        ],
-        cta: "Join the Waitlist",
-        popular: false,
-    },
-];
+import { PRICING_PLANS } from "@/constants/site";
 
 export default function Pricing() {
     return (
@@ -73,7 +24,7 @@ export default function Pricing() {
 
                 {/* Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-[1060px] mx-auto">
-                    {plans.map((plan) => (
+                    {PRICING_PLANS.map((plan) => (
                         <RevealOnScroll key={plan.tier}
                             className={`relative flex flex-col p-8 sm:p-10 rounded-[var(--radius)] border transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[var(--shadow-md)] ${plan.popular
                                 ? "border-[var(--c-accent)] sm:scale-[1.04] sm:-my-2"

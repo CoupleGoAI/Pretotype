@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import BrandHeart from "./BrandHeart";
+import { NAV_LINKS } from "@/constants/site";
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
@@ -32,11 +33,7 @@ export default function Header() {
 
             {/* Links — hidden on small screens */}
             <ul className="hidden sm:flex items-center gap-9 list-none">
-                {[
-                    { label: "How It Works", href: "#how" },
-                    { label: "Features", href: "#features" },
-                    { label: "Pricing", href: "#pricing" },
-                ].map((link) => (
+                {NAV_LINKS.map((link) => (
                     <li key={link.href}>
                         <a
                             href={link.href}

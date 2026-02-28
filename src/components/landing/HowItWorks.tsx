@@ -1,29 +1,6 @@
 import RevealOnScroll from "./RevealOnScroll";
 import SectionBadge from "./SectionBadge";
-
-const steps = [
-    {
-        emoji: "🧠",
-        title: "Sign Up Solo",
-        desc: "Your AI privately learns your communication style and values.",
-        iconBg: "var(--c-muted)",
-        iconShadow: "0 8px 32px rgba(244,139,166,0.15)",
-    },
-    {
-        emoji: "💬",
-        title: "Vent & Reflect",
-        desc: "Get neutral feedback and prepare for tough conversations.",
-        iconBg: "linear-gradient(135deg, var(--c-muted), var(--c-accent-soft))",
-        iconShadow: "0 8px 32px rgba(220,150,210,0.15)",
-    },
-    {
-        emoji: "🤝",
-        title: "Connect as a Couple",
-        desc: "Link with your partner — a Couple AI helps you find win–wins.",
-        iconBg: "var(--c-accent-soft)",
-        iconShadow: "0 8px 32px rgba(204,123,232,0.15)",
-    },
-];
+import { HOW_IT_WORKS_STEPS } from "@/constants/site";
 
 export default function HowItWorks() {
     return (
@@ -46,7 +23,7 @@ export default function HowItWorks() {
                     <div className="hidden sm:block absolute top-10 left-[calc(16.66%+16px)] right-[calc(16.66%+16px)] h-0.5"
                         style={{ background: "linear-gradient(90deg, var(--c-primary-light), var(--c-accent-light))" }} />
 
-                    {steps.map((step, i) => (
+                    {HOW_IT_WORKS_STEPS.map((step, i) => (
                         <RevealOnScroll key={i} className="text-center relative z-[1]">
                             {/* Icon */}
                             <div className="relative w-20 h-20 rounded-3xl flex items-center justify-center text-[32px] mx-auto mb-7"

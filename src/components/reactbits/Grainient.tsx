@@ -2,11 +2,37 @@ import { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
 import './Grainient.css';
 
-const hexToRgb = hex => {
+export interface GrainientProps {
+  timeSpeed?: number;
+  colorBalance?: number;
+  warpStrength?: number;
+  warpFrequency?: number;
+  warpSpeed?: number;
+  warpAmplitude?: number;
+  blendAngle?: number;
+  blendSoftness?: number;
+  rotationAmount?: number;
+  noiseScale?: number;
+  grainAmount?: number;
+  grainScale?: number;
+  grainAnimated?: boolean;
+  contrast?: number;
+  gamma?: number;
+  saturation?: number;
+  centerX?: number;
+  centerY?: number;
+  zoom?: number;
+  color1?: string;
+  color2?: string;
+  color3?: string;
+  className?: string;
+}
+
+function hexToRgb(hex: string): [number, number, number] {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   if (!result) return [1, 1, 1];
   return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255];
-};
+}
 
 const vertex = `#version 300 es
 in vec2 position;
@@ -123,8 +149,8 @@ const Grainient = ({
   color2 = '#5227FF',
   color3 = '#B19EEF',
   className = ''
-}) => {
-  const containerRef = useRef(null);
+}: GrainientProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -194,7 +220,7 @@ const Grainient = ({
 
     let raf = 0;
     const t0 = performance.now();
-    const loop = t => {
+    const loop = (t: number) => {
       program.uniforms.iTime.value = (t - t0) * 0.001;
       renderer.render({ scene: mesh });
       raf = requestAnimationFrame(loop);

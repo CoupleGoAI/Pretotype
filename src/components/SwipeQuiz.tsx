@@ -1,17 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect } from "react";
-
-/* ─── Questions ─── */
-const questions: { q: string; left: string; right: string }[] = [
-    { q: "Relationship stage?", left: "Dating", right: "Living together" },
-    { q: "How often do conflicts happen?", left: "Rare", right: "Often" },
-    { q: "What hurts most?", left: "Tone", right: "Feeling ignored" },
-    { q: "Biggest goal?", left: "Less fights", right: "More closeness" },
-    { q: "Preferred help style?", left: "De-escalation", right: "Communication tips" },
-    { q: "Most interesting feature?", left: "Proactive dates", right: "Pattern insights" },
-    { q: "Privacy comfort?", left: "Anonymous", right: "Account-based" }
-];
+import { QUIZ_QUESTIONS } from "@/constants/quiz";
 
 interface SwipeQuizProps {
     onFinish: (answers: string[]) => void;
@@ -58,7 +48,7 @@ export default function SwipeQuiz({ onFinish }: SwipeQuizProps) {
     /* ─── advance to next card or finish ─── */
     const advance = useCallback(
         (dir: "left" | "right", prevAnswers: string[], prevIndex: number) => {
-            const answer = dir === "left" ? questions[prevIndex].left : questions[prevIndex].right;
+            const answer = dir === "left" ? QUIZ_QUESTIONS[prevIndex].left : QUIZ_QUESTIONS[prevIndex].right;
             const next = [...prevAnswers, answer];
 
             // Animate exit
@@ -79,7 +69,7 @@ export default function SwipeQuiz({ onFinish }: SwipeQuizProps) {
                     el.style.transform = "translate3d(0,0,0)";
                     el.style.opacity = "1";
                 }
-                if (prevIndex + 1 < questions.length) {
+                if (prevIndex + 1 < QUIZ_QUESTIONS.length) {
                     setAnswers(next);
                     setIndex((i) => i + 1);
                 } else {
@@ -176,18 +166,18 @@ export default function SwipeQuiz({ onFinish }: SwipeQuizProps) {
     }, [choose]);
 
     /* ─── current card ─── */
-    const card = questions[index];
+    const card = QUIZ_QUESTIONS[index];
 
     return (
         <section id="quiz" className="py-20 px-6 max-w-md mx-auto text-center scroll-mt-12">
             {/* Progress */}
             <p className="text-sm font-medium text-foreground/50 mb-1">
-                {index + 1} / {questions.length}
+                {index + 1} / {QUIZ_QUESTIONS.length}
             </p>
             <div className="h-1.5 rounded-full bg-muted mb-10 overflow-hidden">
                 <div
                     className="h-full rounded-full bg-primary transition-all duration-300"
-                    style={{ width: `${((index + 1) / questions.length) * 100}%` }}
+                    style={{ width: `${((index + 1) / QUIZ_QUESTIONS.length) * 100}%` }}
                 />
             </div>
 
@@ -200,7 +190,7 @@ export default function SwipeQuiz({ onFinish }: SwipeQuizProps) {
                 className="swipe-card relative select-none touch-none rounded-3xl bg-white border border-primary/10 p-8 min-h-65 flex flex-col items-center justify-center will-change-transform"
                 style={{ cursor: exiting ? "default" : "grab", animation: "quizCardGlow 4s ease-in-out infinite" }}
                 role="group"
-                aria-label={`Question ${index + 1} of ${questions.length}`}
+                aria-label={`Question ${index + 1} of ${QUIZ_QUESTIONS.length}`}
             >
                 {/* directional hints */}
                 {hintDir && (

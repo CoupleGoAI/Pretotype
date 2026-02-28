@@ -1,4 +1,5 @@
 import BrandHeart from "./BrandHeart";
+import { FOOTER_COLUMNS } from "@/constants/site";
 
 export default function Footer() {
     return (
@@ -18,31 +19,17 @@ export default function Footer() {
                     </p>
                 </div>
 
-                {/* Product */}
-                <div>
-                    <h4 className="text-white font-semibold text-[0.9rem] uppercase tracking-[0.08em] mb-5">Product</h4>
-                    <a href="#how" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">How It Works</a>
-                    <a href="#features" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Features</a>
-                    <a href="#pricing" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Pricing</a>
-                    <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Roadmap</a>
-                </div>
-
-                {/* Company */}
-                <div>
-                    <h4 className="text-white font-semibold text-[0.9rem] uppercase tracking-[0.08em] mb-5">Company</h4>
-                    <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">About Us</a>
-                    <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Blog</a>
-                    <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Careers</a>
-                    <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Contact</a>
-                </div>
-
-                {/* Legal */}
-                <div>
-                    <h4 className="text-white font-semibold text-[0.9rem] uppercase tracking-[0.08em] mb-5">Legal</h4>
-                    <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Privacy Policy</a>
-                    <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Terms of Service</a>
-                    <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Cookie Policy</a>
-                </div>
+                {/* Dynamic columns */}
+                {FOOTER_COLUMNS.map((col) => (
+                    <div key={col.heading}>
+                        <h4 className="text-white font-semibold text-[0.9rem] uppercase tracking-[0.08em] mb-5">{col.heading}</h4>
+                        {col.links.map((link) => (
+                            <a key={link.label} href={link.href} className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">
+                                {link.label}
+                            </a>
+                        ))}
+                    </div>
+                ))}
             </div>
 
             {/* Bottom bar */}

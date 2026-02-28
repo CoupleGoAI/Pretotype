@@ -2,37 +2,7 @@
 
 import WaitlistForm from "./landing/WaitlistForm";
 import QuizGrainient from "./QuizGrainient";
-
-/* map answers → snapshot blurb */
-function buildSnapshot(a: string[]): { title: string; bullets: string[] } {
-    const stage = a[0]; // Dating | Living together
-    const conflict = a[1]; // Rare | Often
-    const hurt = a[2]; // Tone | Feeling ignored
-    const goal = a[3]; // Less fights | More closeness
-    const help = a[4]; // De-escalation | Communication tips
-    const interest = a[5]; // Proactive dates | Pattern insights
-    const privacy = a[6]; // Anonymous | Account-based
-    const pay = a[7]; // 0–49 DKK | 50–199 DKK
-
-    const title =
-        conflict === "Often"
-            ? "The Passionate Duo 🔥"
-            : goal === "More closeness"
-                ? "The Closeness Seekers 💕"
-                : "The Steady Builders 🧱";
-
-    const bullets: string[] = [
-        `📍 Stage: ${stage}`,
-        `⚡ Conflict frequency: ${conflict}`,
-        `💔 Pain point: ${hurt}`,
-        `🎯 Primary goal: ${goal}`,
-        `🛠 Help style: ${help}`,
-        `✨ Top interest: ${interest}`,
-        `🔒 Privacy: ${privacy}`
-    ];
-
-    return { title, bullets };
-}
+import { buildSnapshot } from "@/constants/quiz";
 
 interface ResultProps {
     answers: string[];

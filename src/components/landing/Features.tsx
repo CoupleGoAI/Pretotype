@@ -1,13 +1,7 @@
 import RevealOnScroll from "./RevealOnScroll";
 import SectionBadge from "./SectionBadge";
 import { BentoGrid, BentoCard } from "@/components/reactbits/FeatureCards";
-
-const cards = [
-    { emoji: "🛡", title: "Private AI Confidant", desc: "Vent and get honest feedback without judgment. Your partner never sees these chats.", bg: "var(--c-muted)" },
-    { emoji: "⚖", title: "Neutral Mediation", desc: "The Couple AI understands both sides and suggests compromises you hadn\u2019t thought of.", bg: "var(--c-accent-soft)" },
-    { emoji: "🎉", title: "Date & Gift Ideas", desc: "Hyper-personalized suggestions based on what both of you actually like.", bg: "var(--c-accent-soft)" },
-    { emoji: "📊", title: "Love Dashboard", desc: "Track conflicts resolved, dates planned, communication trends, and milestones.", bg: "var(--c-muted)" },
-];
+import { FEATURE_CARDS } from "@/constants/site";
 
 export default function Features() {
     return (
@@ -27,7 +21,7 @@ export default function Features() {
 
                 {/* Cards grid — Bento */}
                 <BentoGrid>
-                    {cards.map((c, i) => (
+                    {FEATURE_CARDS.map((c, i) => (
                         <RevealOnScroll key={i}>
                             <BentoCard>
                                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-[26px] mb-5"
