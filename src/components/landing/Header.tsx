@@ -22,10 +22,10 @@ export default function Header() {
             {/* Logo */}
             <a href="#" className="flex items-center gap-2.5 no-underline font-bold text-[1.35rem] text-[var(--foreground)]">
                 <div
-                    className="w-[38px] h-[38px] rounded-[12px] flex items-center justify-center text-white text-lg"
-                    style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow-primary)" }}
+                    className="w-[38px] h-[38px] rounded-[12px] overflow-hidden flex items-center justify-center"
+                    style={{ boxShadow: "var(--shadow-glow-primary)" }}
                 >
-                    <BrandHeart size={20} />
+                    <BrandHeart size={38} />
                 </div>
                 CoupleGoAI
             </a>
