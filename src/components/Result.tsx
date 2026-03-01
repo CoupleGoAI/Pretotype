@@ -57,7 +57,7 @@ export default function Result({ answers }: ResultProps) {
                 ))}
             </ul>
 
-            <div className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] mt-8 py-10 px-6">
+            <div className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] mt-8 py-10 px-6 -mx-[calc(1.5rem-2.5vw)] sm:mx-0">
                 <QuizGrainient />
                 <div className="relative z-[1]">
                     <WaitlistForm extraPayload={{ quizAnswers: answers, snapshot: title }} />
