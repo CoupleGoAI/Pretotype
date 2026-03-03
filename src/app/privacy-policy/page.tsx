@@ -4,7 +4,7 @@ export default function PrivacyPolicy() {
             <div className="max-w-4xl mx-auto px-6 py-16">
                 <h1 className="text-4xl font-bold mb-8 text-white">Privacy Policy</h1>
                 <div className="prose prose-invert max-w-none space-y-6 text-base leading-relaxed">
-                    <p className="text-white/70">Last updated: March 1, 2026</p>
+                    <p className="text-white/70">Last updated: March 3, 2026</p>
 
                     <section>
                         <h2 className="text-2xl font-semibold text-white mt-8 mb-4">1. Introduction</h2>
@@ -19,11 +19,17 @@ export default function PrivacyPolicy() {
                         <p>When you register or use our services, we may collect:</p>
                         <ul className="list-disc pl-6 space-y-2">
                             <li>Email address</li>
+                            <li>Full name</li>
+                            <li>Date of birth</li>
+                            <li>Sex / gender</li>
                             <li>Account credentials and authentication information</li>
-                            <li>Profile information (name, relationship status, preferences)</li>
+                            <li>Profile information (relationship status, preferences, and other information you voluntarily provide)</li>
                             <li>Communication data (messages, conversations with our AI)</li>
                             <li>Usage patterns and behavioral data</li>
                         </ul>
+                        <p className="mt-4">
+                            The personal information you voluntarily provide — such as your name, date of birth, sex, and relationship preferences — is used to personalise your experience and improve the quality of our AI-powered services.
+                        </p>
 
                         <h3 className="text-lg font-semibold text-white/90 mt-6 mb-3">2.2 Sensitive Information</h3>
                         <p>
@@ -42,11 +48,26 @@ export default function PrivacyPolicy() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">3. How We Use Your Information</h2>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">3. AI Data Collection and Processing</h2>
+                        <p>
+                            Our current website and future application collect and process your personal data to power our AI-driven relationship support features. Specifically:
+                        </p>
+                        <ul className="list-disc pl-6 space-y-2 mt-4">
+                            <li>Profile data (name, date of birth, sex, relationship preferences) is processed by our AI to deliver personalised guidance tailored to you and your relationship.</li>
+                            <li>Conversation data shared with our AI is processed to generate responses and improve the accuracy of future AI outputs.</li>
+                            <li>Aggregated and anonymised data may be used to train and refine our AI models.</li>
+                        </ul>
+                        <p className="mt-4">
+                            You can request deletion of your data at any time (see Section 7). AI-generated insights derived from your data are not stored in a form that can be attributed back to you once anonymised.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">4. How We Use Your Information</h2>
                         <p>We use your information to:</p>
                         <ul className="list-disc pl-6 space-y-2">
                             <li>Provide and improve our AI relationship support services</li>
-                            <li>Personalize your experience</li>
+                            <li>Personalise your experience based on your profile (name, date of birth, sex, and preferences)</li>
                             <li>Send service updates and support messages</li>
                             <li>Process transactions and send billing information</li>
                             <li>Conduct research and analytics to improve our platform</li>
@@ -56,7 +77,7 @@ export default function PrivacyPolicy() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">4. Data Sharing and Disclosure</h2>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">5. Data Sharing and Disclosure</h2>
                         <p>
                             We do not sell your personal information. We may share information with:
                         </p>
@@ -69,7 +90,7 @@ export default function PrivacyPolicy() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">5. Data Storage and Security</h2>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">6. Data Storage and Security</h2>
                         <p>
                             We implement advanced encryption and security measures to protect your data, including:
                         </p>
@@ -85,7 +106,7 @@ export default function PrivacyPolicy() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">6. Your Rights and Choices</h2>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">7. Your Rights and Choices</h2>
                         <p>You have the right to:</p>
                         <ul className="list-disc pl-6 space-y-2">
                             <li>Access your personal information</li>
@@ -101,35 +122,35 @@ export default function PrivacyPolicy() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">7. Children's Privacy</h2>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">8. Children's Privacy</h2>
                         <p>
                             Our services are not directed to individuals under 18. We do not knowingly collect personal information from children. If we become aware of such collection, we will promptly delete the information and terminate the child's account.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">8. International Data Transfers</h2>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">9. International Data Transfers</h2>
                         <p>
                             Your information may be transferred to and processed in countries other than your country of residence. These countries may have data protection laws different from your home country. By using our services, you consent to such transfers.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">9. Third-Party Links</h2>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">10. Third-Party Links</h2>
                         <p>
                             Our website may contain links to third-party sites. We are not responsible for their privacy practices. Please review their privacy policies before providing your information.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">10. Changes to This Policy</h2>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">11. Changes to This Policy</h2>
                         <p>
                             We may update this Privacy Policy periodically. We will notify you of significant changes via email or by posting the updated policy on our website with a new "Last Updated" date.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">11. Contact Us</h2>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">12. Contact Us</h2>
                         <p>
                             If you have questions about this Privacy Policy or our privacy practices, please contact us at:
                         </p>

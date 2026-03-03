@@ -4,7 +4,7 @@ export default function TermsOfService() {
             <div className="max-w-4xl mx-auto px-6 py-16">
                 <h1 className="text-4xl font-bold mb-8 text-white">Terms of Service</h1>
                 <div className="prose prose-invert max-w-none space-y-6 text-base leading-relaxed">
-                    <p className="text-white/70">Last updated: March 1, 2026</p>
+                    <p className="text-white/70">Last updated: March 3, 2026</p>
 
                     <section>
                         <h2 className="text-2xl font-semibold text-white mt-8 mb-4">1. Agreement to Terms</h2>
@@ -123,7 +123,20 @@ export default function TermsOfService() {
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">14. Contact Information</h2>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">14. AI Services and Data Processing</h2>
+                        <p>
+                            By using CoupleGoAI's AI-powered features, you acknowledge and agree that:
+                        </p>
+                        <ul className="list-disc pl-6 space-y-2 mt-4">
+                            <li>Our application collects and processes personal data you provide — including your name, email address, date of birth, sex, and relationship information — to deliver personalised AI-driven guidance.</li>
+                            <li>Conversations and interactions with our AI may be processed to generate responses, improve AI model accuracy, and enhance the overall service.</li>
+                            <li>Sensitive relationship information shared with our AI is encrypted and treated with the highest level of confidentiality. We do not share this information with third parties except as required by law.</li>
+                            <li>You may request deletion of your personal data at any time by contacting us at couplegoai.main@gmail.com.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-semibold text-white mt-8 mb-4">15. Contact Information</h2>
                         <p>
                             For questions about these Terms of Service, please contact us at:
                         </p>
