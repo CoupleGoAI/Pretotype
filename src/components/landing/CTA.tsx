@@ -5,7 +5,7 @@ import RevealOnScroll from "./RevealOnScroll";
 export default function CTA() {
 
     return (
-        <section id="cta" className="relative py-20 sm:py-28 px-6 text-center overflow-hidden mx-4 sm:mx-10 rounded-[28px] sm:rounded-[40px]">
+        <section id="cta" className="relative py-20 sm:py-28 px-6 text-center overflow-hidden mx-2 sm:mx-10 rounded-[28px] sm:rounded-[40px]">
             <RevealOnScroll className="relative z-2 max-w-[520px] mx-auto">
                 <h2
                     className="text-[var(--foreground)] text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold leading-[1.15] tracking-tight mb-4"

@@ -18,7 +18,7 @@ export default function QuizSection() {
             </div>
 
             {/* Grainient area */}
-            <div className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] mx-0 sm:mx-4 py-16 sm:py-20 px-6">
+            <div className="relative overflow-hidden rounded-[28px] sm:rounded-[40px] -mx-6 sm:mx-4 py-16 sm:py-20 px-6">
                 {/* Grainient background — visible only for the initial quiz CTA */}
                 {!quizStarted && !quizAnswers && <QuizGrainient />}
 
