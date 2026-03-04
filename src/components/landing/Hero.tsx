@@ -70,7 +70,7 @@ export default function Hero() {
                         </div>
                     </div>
                     <p className="text-[0.9rem] text-[var(--gray)]">
-                        <strong className="text-[var(--foreground)]">2,400+</strong> couples on the waitlist
+                        <strong className="text-[var(--foreground)]">400+</strong> couples on the waitlist
                     </p>
                 </div>
             </div>
