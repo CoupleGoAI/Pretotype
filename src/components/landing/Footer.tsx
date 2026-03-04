@@ -49,7 +49,6 @@ export default function Footer() {
                             </svg>
                         </a>
                     </div>
-                    <a href="mailto:couplegoai.main@gmail.com" className="block text-white/50 text-[0.85rem] no-underline mt-3 transition-colors hover:text-[var(--c-accent-light)]">couplegoai.main@gmail.com</a>
                 </div>
 
                 {/* Legal */}
