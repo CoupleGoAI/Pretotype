@@ -31,6 +31,7 @@ export default function Footer() {
                 <div>
                     <h4 className="text-white font-semibold text-[0.9rem] uppercase tracking-[0.08em] mb-5">Company</h4>
                     <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">About Us</a>
+                    <a href="/blog" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Blog</a>
                     <div className="flex gap-4 mt-4">
                         <a href="https://discord.gg/fA58tKnT" target="_blank" rel="noopener noreferrer"
                             className="text-white/50 hover:text-[var(--c-accent-light)] transition-colors"
