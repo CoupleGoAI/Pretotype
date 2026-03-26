@@ -19,7 +19,7 @@ const plans = [
     },
     {
         tier: "Couple",
-        price: "€5",
+        price: "€10",
         desc: "Turn conflicts into connection with a shared AI that knows both of you.",
         features: [
             "Unlimited personal AI chat",
@@ -34,7 +34,7 @@ const plans = [
     },
     {
         tier: "Soulmate",
-        price: "€12",
+        price: "€15",
         desc: "Turn your relationship into a growth journey with deep insights and coaching.",
         features: [
             "Everything in Couple, plus:",
