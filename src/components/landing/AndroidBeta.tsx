@@ -1,10 +1,8 @@
-"use client";
-
 import RevealOnScroll from "./RevealOnScroll";
 import SectionBadge from "./SectionBadge";
 
 const GITHUB_REPO = "https://github.com/CoupleGoAI/couplegoai";
-const APK_DOWNLOAD_URL = "https://github.com/CoupleGoAI/couplegoai/releases/latest";
+const GITHUB_API_LATEST = "https://api.github.com/repos/CoupleGoAI/couplegoai/releases/latest";
 
 function AndroidIcon() {
     return (
@@ -32,7 +30,23 @@ function GithubIcon() {
     );
 }
 
-export default function AndroidBeta() {
+async function getApkUrl(): Promise<string> {
+    try {
+        const res = await fetch(GITHUB_API_LATEST, {
+            headers: { Accept: "application/vnd.github+json" },
+            next: { revalidate: 3600 },
+        });
+        if (!res.ok) throw new Error();
+        const data = await res.json() as { assets: { name: string; browser_download_url: string }[] };
+        const apk = data.assets.find((a) => a.name.endsWith(".apk"));
+        return apk?.browser_download_url ?? `${GITHUB_REPO}/releases/latest`;
+    } catch {
+        return `${GITHUB_REPO}/releases/latest`;
+    }
+}
+
+export default async function AndroidBeta() {
+    const apkUrl = await getApkUrl();
     return (
         <section id="android-beta" className="py-20 sm:py-[100px] px-6">
             <div className="max-w-[900px] mx-auto">
@@ -85,9 +99,8 @@ export default function AndroidBeta() {
                             {/* Actions */}
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                                 <a
-                                    href={APK_DOWNLOAD_URL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    href={apkUrl}
+                                    download
                                     className="inline-flex items-center gap-2.5 px-9 py-4 rounded-full font-semibold text-[1.05rem] text-white no-underline transition-all duration-[350ms] hover:-translate-y-0.5 hover:shadow-xl"
                                     style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow-primary)" }}
                                 >
