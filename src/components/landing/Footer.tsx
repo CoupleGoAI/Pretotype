@@ -25,6 +25,12 @@ export default function Footer() {
                     <a href="#features" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Features</a>
                     <a href="#pricing" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Pricing</a>
                     <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Roadmap</a>
+                    <a href="#android-beta" className="inline-flex items-center gap-1.5 text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M17.523 15.341a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-9.046 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M3.184 7.42A2 2 0 0 1 5 6h14a2 2 0 0 1 1.816 1.42l.948 3.16A6.02 6.02 0 0 1 22 12v5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-5c0-.494.084-.967.236-1.42zM16.5 2.5l-2 3.5h-5l-2-3.5" />
+                        </svg>
+                        Android Beta
+                    </a>
                 </div>
 
                 {/* Company */}

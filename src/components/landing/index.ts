@@ -7,3 +7,4 @@ export { default as CTA } from "./CTA";
 export { default as Footer } from "./Footer";
 export { default as SectionBadge } from "./SectionBadge";
 export { default as AndroidBeta } from "./AndroidBeta";
+export { default as AndroidBetaBanner } from "./AndroidBetaBanner";

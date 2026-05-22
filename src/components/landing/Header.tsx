@@ -49,6 +49,17 @@ export default function Header() {
                 ))}
                 <li>
                     <a
+                        href="#android-beta"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-medium text-[0.85rem] text-[var(--foreground)] no-underline border border-[rgba(30,18,48,0.15)] transition-all duration-[350ms] hover:border-[var(--c-primary)] hover:-translate-y-0.5"
+                    >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M17.523 15.341a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-9.046 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M3.184 7.42A2 2 0 0 1 5 6h14a2 2 0 0 1 1.816 1.42l.948 3.16A6.02 6.02 0 0 1 22 12v5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-5c0-.494.084-.967.236-1.42zM16.5 2.5l-2 3.5h-5l-2-3.5" />
+                        </svg>
+                        Android Beta
+                    </a>
+                </li>
+                <li>
+                    <a
                         href="#quiz-section"
                         className="inline-flex items-center gap-2 px-7 py-3 rounded-full font-semibold text-[0.95rem] text-white no-underline cursor-pointer border-none transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5"
                         style={{ background: "var(--gradient-brand)", boxShadow: "var(--shadow-glow-primary)" }}

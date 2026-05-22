@@ -1,4 +1,4 @@
-import { Header, Hero, HowItWorks, Features, Pricing, CTA, Footer, AndroidBeta } from "@/components/landing";
+import { Header, Hero, HowItWorks, Features, Pricing, CTA, Footer, AndroidBeta, AndroidBetaBanner } from "@/components/landing";
 import QuizSection from "@/components/QuizSection";
 import WaitlistProvider from "@/components/landing/WaitlistProvider";
 
@@ -11,6 +11,7 @@ export default function Home() {
         <HowItWorks />
         <Features />
         <QuizSection />
+        <AndroidBetaBanner />
         <Pricing />
         <AndroidBeta />
         <CTA />
