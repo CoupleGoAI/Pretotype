@@ -6,3 +6,4 @@ export { default as Pricing } from "./Pricing";
 export { default as CTA } from "./CTA";
 export { default as Footer } from "./Footer";
 export { default as SectionBadge } from "./SectionBadge";
+export { default as AndroidBeta } from "./AndroidBeta";

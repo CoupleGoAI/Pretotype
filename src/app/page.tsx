@@ -1,4 +1,4 @@
-import { Header, Hero, HowItWorks, Features, Pricing, CTA, Footer } from "@/components/landing";
+import { Header, Hero, HowItWorks, Features, Pricing, CTA, Footer, AndroidBeta } from "@/components/landing";
 import QuizSection from "@/components/QuizSection";
 import WaitlistProvider from "@/components/landing/WaitlistProvider";
 
@@ -12,7 +12,7 @@ export default function Home() {
         <Features />
         <QuizSection />
         <Pricing />
-        <div className="h-8 sm:h-12" />
+        <AndroidBeta />
         <CTA />
         <div className="h-8 sm:h-12" />
       </main>
