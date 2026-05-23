@@ -1,6 +1,7 @@
 "use client";
 
 import HeroCTA from "@/components/reactbits/HeroCTA";
+import AndroidInstallCTA from "@/components/reactbits/AndroidInstallCTA";
 
 export default function Hero() {
 
@@ -46,6 +47,9 @@ export default function Hero() {
                         <HeroCTA>
                             Take the Quiz →
                         </HeroCTA>
+                    </a>
+                    <a href="#android-beta" className="no-underline">
+                        <AndroidInstallCTA />
                     </a>
                     <a href="#how"
                         className="inline-flex items-center gap-2 px-9 py-4 rounded-full font-semibold text-[1.05rem] text-[var(--foreground)] bg-white border border-[rgba(30,18,48,0.1)] no-underline transition-all duration-[350ms] hover:border-[var(--c-primary)] hover:-translate-y-0.5"

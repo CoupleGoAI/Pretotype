@@ -1,6 +1,5 @@
 "use client";
 
-import { Smartphone } from "lucide-react";
 import { useEffect, useState } from "react";
 import BrandHeart from "./BrandHeart";
 
@@ -48,15 +47,6 @@ export default function Header() {
                         </a>
                     </li>
                 ))}
-                <li>
-                    <a
-                        href="#android-beta"
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-medium text-[0.85rem] text-[var(--foreground)] no-underline border border-[rgba(30,18,48,0.15)] transition-all duration-[350ms] hover:border-[var(--c-primary)] hover:-translate-y-0.5"
-                    >
-                        <Smartphone size={14} strokeWidth={2.2} aria-hidden="true" />
-                        Android Beta
-                    </a>
-                </li>
                 <li>
                     <a
                         href="#quiz-section"
