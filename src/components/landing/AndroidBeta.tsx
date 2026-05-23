@@ -1,4 +1,5 @@
 import { Download, ShieldCheck, Smartphone } from "lucide-react";
+import { type ReactElement } from "react";
 import { APK_DOWNLOAD_PATH, APK_FILE_NAME } from "@/lib/apkDownload";
 import RevealOnScroll from "./RevealOnScroll";
 import SectionBadge from "./SectionBadge";
@@ -9,11 +10,11 @@ const installNotes = [
     "No app store required",
 ];
 
-export default function AndroidBeta() {
+export default function AndroidBeta(): ReactElement {
     return (
-        <section id="android-beta" className="relative py-20 sm:py-28 px-6">
+        <section id="android-beta" className="relative my-10 sm:my-14 py-16 sm:py-24 px-6">
             <div
-                className="absolute inset-0 mx-4 sm:mx-10 rounded-[28px] sm:rounded-[40px]"
+                className="absolute inset-y-0 left-4 right-4 sm:left-10 sm:right-10 rounded-[28px] sm:rounded-[40px]"
                 style={{ background: "var(--c-muted)" }}
             />
             <div className="relative z-[1] max-w-[1060px] mx-auto">

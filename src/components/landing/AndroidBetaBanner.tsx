@@ -1,12 +1,13 @@
 import { Download, Smartphone } from "lucide-react";
+import { type ReactElement } from "react";
 import { APK_DOWNLOAD_PATH, APK_FILE_NAME } from "@/lib/apkDownload";
 
-export default function AndroidBetaBanner() {
+export default function AndroidBetaBanner(): ReactElement {
     return (
-        <section className="px-6 py-8">
+        <section className="px-6 py-10 sm:py-12">
             <div className="max-w-[1060px] mx-auto">
                 <div
-                    className="flex flex-col sm:flex-row items-center justify-between gap-5 rounded-[var(--radius)] border border-[rgba(30,18,48,0.08)] bg-white px-6 py-5 sm:px-7"
+                    className="flex flex-col sm:flex-row items-center justify-between gap-5 rounded-[var(--radius)] border border-[rgba(30,18,48,0.08)] bg-white px-6 py-5 sm:px-7 mx-auto"
                     style={{
                         boxShadow: "var(--shadow-sm)",
                     }}
