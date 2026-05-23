@@ -1,5 +1,6 @@
 "use client";
 
+import { Smartphone } from "lucide-react";
 import { useEffect, useState } from "react";
 import BrandHeart from "./BrandHeart";
 
@@ -52,9 +53,7 @@ export default function Header() {
                         href="#android-beta"
                         className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-medium text-[0.85rem] text-[var(--foreground)] no-underline border border-[rgba(30,18,48,0.15)] transition-all duration-[350ms] hover:border-[var(--c-primary)] hover:-translate-y-0.5"
                     >
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M17.523 15.341a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-9.046 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M3.184 7.42A2 2 0 0 1 5 6h14a2 2 0 0 1 1.816 1.42l.948 3.16A6.02 6.02 0 0 1 22 12v5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-5c0-.494.084-.967.236-1.42zM16.5 2.5l-2 3.5h-5l-2-3.5" />
-                        </svg>
+                        <Smartphone size={14} strokeWidth={2.2} aria-hidden="true" />
                         Android Beta
                     </a>
                 </li>
