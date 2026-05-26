@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import BrandHeart from "./BrandHeart";
+import { SHOW_PRICING } from "@/flags";
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
@@ -35,7 +36,7 @@ export default function Header() {
                 {[
                     { label: "How It Works", href: "#how" },
                     { label: "Features", href: "#features" },
-                    { label: "Pricing", href: "#pricing" },
+                    ...(SHOW_PRICING ? [{ label: "Pricing", href: "#pricing" }] : []),
                 ].map((link) => (
                     <li key={link.href}>
                         <a
