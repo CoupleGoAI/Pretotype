@@ -1,5 +1,6 @@
 import { Smartphone } from "lucide-react";
 import BrandHeart from "./BrandHeart";
+import { SHOW_PRICING } from "@/flags";
 
 export default function Footer() {
     return (
@@ -24,7 +25,7 @@ export default function Footer() {
                     <h4 className="text-white font-semibold text-[0.9rem] uppercase tracking-[0.08em] mb-5">Product</h4>
                     <a href="#how" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">How It Works</a>
                     <a href="#features" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Features</a>
-                    <a href="#pricing" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Pricing</a>
+                    {SHOW_PRICING && <a href="#pricing" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Pricing</a>}
                     <a href="#" className="block text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">Roadmap</a>
                     <a href="#android-beta" className="inline-flex items-center gap-1.5 text-white/50 text-[0.9rem] no-underline mb-3 transition-colors hover:text-[var(--c-accent-light)]">
                         <Smartphone size={14} strokeWidth={2.1} aria-hidden="true" />
